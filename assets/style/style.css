@@ -1,0 +1,287 @@
+  :root {
+      --primary: #194c80;
+      /* primary color, used for most text */
+      --background-color: #baeaff;
+      --color1: #65d1ff;
+      --color2: #FF9534;
+      --color3: #FF9E44;
+      /* use for hover */
+      --color4: #FFDBBA;
+      --dark-grey: #2E2E2E;
+      --light-grey: #C1BCB6;
+  }
+
+
+  * {
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+  }
+
+  header {
+      text-align: center;
+  }
+
+  h1 {
+      color: var(--primary);
+      font-size: 2rem;
+  }
+
+  h2 {
+      font-size: 1.75rem;
+  }
+
+  body {
+      background-color: var(--background-color);
+  }
+
+  section {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 0;
+      margin: 0 10vw;
+      overflow-x: auto;
+  }
+
+  @media screen and (max-width: 900px) {
+      section {
+          margin: 0 0vw;
+      }
+  }
+
+
+  iframe {
+      border: transparent;
+      border-radius: 5px;
+      margin: 10px 30px;
+  }
+
+  @media screen and (max-width: 900px) {
+      iframe {
+          width: 80vw;
+      }
+  }
+
+
+  nav {
+      box-shadow: 0px 1px 10px var(--primary);
+  }
+
+
+
+  ul {
+      font-weight: 600;
+      justify-content: center;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: var(--primary);
+      width: 100vw;
+      display: flex;
+  }
+
+  nav li {
+      float: left
+  }
+
+
+  @media screen and (max-width: 900px) {
+      ul {
+          display: block;
+          padding: 0px 15px;
+      }
+
+  }
+
+  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+      background-color: var(--color1);
+  }
+
+
+  .sticky {
+      position: fixed;
+      width: 100vw;
+      top: 0;
+      z-index: 99;
+  }
+
+  .center-horizontal {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+  }
+
+  #heading-wrapper {
+      margin-top: 120px;
+      flex-direction: row;
+      flex-wrap: wrap;
+  }
+
+  #headshot {
+      width: 30vw;
+      max-width: 320px;
+      border-radius: 500px;
+      margin: 20px 50px;
+  }
+
+
+  /* For mobile phones */
+  @media screen and (max-width: 900px) {
+      #headshot {
+          width: 50vw;
+      }
+  }
+
+  #resume-button {
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+      border: 6px solid var(--primary);
+      border-radius: 1px;
+      background-color: transparent;
+      margin-top: 3rem;
+      padding: 0.5rem;
+      transition: .2s ease-in-out;
+      box-shadow: var(--primary);
+      transform: scale(1);
+  }
+
+  #resume-button:hover {
+      background-color: var(--primary);
+      color: var(--background-color);
+  }
+
+  .vertical-left {
+      display: flex;
+      flex-direction: column;
+
+  }
+
+
+  #projects-section {
+      display: flex;
+      flex-direction: column;
+  }
+
+
+  table {
+      width: 100%;
+      padding: 0 20px;
+  }
+
+  th, td {
+      text-align: left;
+      padding-left: 15px;
+      padding-bottom: 10px;
+  }
+
+
+  form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  form input, form textarea {
+      width: 20vw;
+      border-radius: 5px;
+      border-style: none;
+      padding: 5px;
+  }
+
+  form textarea {
+      width: 40vw;
+      height: 20vh
+  }
+
+
+  textarea:focus, input:focus {
+      outline: 3px solid var(--primary);
+  }
+
+
+  button {
+      border-style: none;
+      padding: 10px 20px;
+      background-color: var(--primary);
+      color: white;
+  }
+
+  button:hover {
+      background-color: var(--color1);
+      font-weight: 500;
+      cursor: pointer;
+  }
+
+  fieldset {
+      border: transparent;
+      padding-bottom: 10px;
+  }
+
+
+  #social-media {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+  }
+
+  picture {
+      margin: 10px 10px;
+  }
+
+  #social-media picture:hover {
+      cursor: pointer;
+  }
+
+  footer {
+      text-align: center;
+  }
+
+  /* =========EXPERIMENTS================================================== */
+  #about-me-section fieldset {
+      border: 3px solid var(--primary);
+      padding: 10px 10px;
+      /* padding-bottom: 10px; */
+  }
+
+  .pair label {
+      justify-content: left;
+      padding-left: 5px;
+  }
+
+  video {
+      border-style: none;
+      outline: none;
+      border-radius: 0px;
+  }
+
+  #about-me-section input {
+      width: fit-content;
+  }
+
+  .pair {
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      align-items: center;
+  }
+
+  #about-me-section button {
+      margin-top: 20px;
+  }

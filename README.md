@@ -1,3 +1,3 @@
-# cse134b-hw2
-Basic HTML-only layout of my personal website    
-[Deployed Site (Through Firebase)](https://cse134b-hw2-5b643.web.app/)
+# cse134b-hw
+Basic HTML & CSS layout of my personal website    
+[Deployed Site (Through Firebase)](https://cse134b-hw3-9ac18.web.app/)
