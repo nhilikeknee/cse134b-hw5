@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Custom Dialogs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.6/purify.min.js"
+        integrity="sha512-DJjvM/U3zCRpzrYboJgg23iLHapWcS2rlo7Ni18Cdv+FMs6b3gUF7hQihztj4uVkHHfUwk7dha97jVzRqUJ7hg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="./assets/scripts/customdialog.js"></script>
+
+</head>
+
+<body>
+
+
+
+
+
+
+    <!-- Simple pop-up dialog box, containing a form -->
+    <!-- code referenced from: https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal -->
+
+    <dialog id="diaPrompt">
+        <form method="dialog">
+            <section>
+                <p id="promptInner">
+                </p>
+                <input type="text" id="fname" name="fname">
+            </section>
+            <menu>
+                <button id="cancel-prompt" value="cancel">Cancel</button>
+                <button id="ok-prompt" type="submit">Ok</button>
+            </menu>
+        </form>
+    </dialog>
+
+    <dialog id="diaAlert">
+        <form method="dialog">
+            <section>
+                <p id="alertInner">
+                </p>
+            </section>
+            <menu>
+                <button type="submit">Ok</button>
+            </menu>
+        </form>
+    </dialog>
+
+    <dialog id="diaConfirm">
+        <form method="dialog">
+            <section>
+                <p id="confirmInner">
+                </p>
+            </section>
+            <menu>
+                <button id="cancel-confirm" value="cancel">Cancel</button>
+                <button id="ok-confirm" type="submit">Ok</button>
+            </menu>
+        </form>
+    </dialog>
+
+
+    <menu>
+        <button id="alertBtn">Alert</button>
+        <button id="comfirmBtn">
+            Confirm
+        </button>
+        <button id="promptBtn">
+            Prompt
+        </button>
+    </menu>
+
+
+    <p id="outputMsg">
+    </p>
+    <output id="output"></output>
+</body>
+
+</html>

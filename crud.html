@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blog (CRUD)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.6/purify.min.js"
+        integrity="sha512-DJjvM/U3zCRpzrYboJgg23iLHapWcS2rlo7Ni18Cdv+FMs6b3gUF7hQihztj4uVkHHfUwk7dha97jVzRqUJ7hg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="./assets/scripts/blog.js"></script>
+
+</head>
+
+<body>
+    <h1>Welcome to my blog!</h1>
+    <dialog id="diaPrompt">
+        <form method="dialog">
+            <section>
+                <p id="promptInner">
+                </p>
+                <label for="ptitle">Title</label><br>
+                <input type="text" id="ptitle" name="ptitle"><br>
+                <label for="pdate">Date</label><br>
+                <input type="text" id="pdate" name="pdate"><br>
+                <label for="psummary">Summary</label><br>
+                <textarea id="psummary"></textarea>
+            </section>
+            <menu>
+                <button id="cancel-prompt" value="cancel">Cancel</button>
+                <button id="ok-prompt" type="submit">Ok</button>
+            </menu>
+        </form>
+    </dialog>
+
+
+
+
+
+    <menu>
+        <button id="promptBtn">
+            + New Post
+        </button>
+    </menu>
+
+
+    <section id="blog-section">
+
+    </section>
+
+    <p id="outputMsg">
+    </p>
+    <output id="output"></output>
+</body>
+
+</html>
