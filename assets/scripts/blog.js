@@ -15,8 +15,8 @@ promptBtn.addEventListener('click', function () {
 
 const cancelPromptBtn = document.getElementById('cancel-prompt');
 cancelPromptBtn.addEventListener('click', function () {
-    document.getElementById("outputMsg").innerHTML = "Prompt result: ";
-    document.getElementById("output").innerHTML = "you canceled";
+    // document.getElementById("outputMsg").innerHTML = "Prompt result: ";
+    // document.getElementById("output").innerHTML = "you canceled";
 
 });
 

@@ -68,13 +68,15 @@ button:hover {
 }
 
 dialog {
-    background-color: red;
+    background-color: var(--color1);
+    position: absolute;
+    left: 30%;
+    top: 10%;
+    box-shadow: 2px 2px 3px #194c80;
     align-items: center;
     justify-content: center;
     width: 500px;
     height: 600px;
-}
-
-dialog * {
-    background-color: yellow;
+    border: none;
+    padding: 30px;
 }
