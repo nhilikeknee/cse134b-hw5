@@ -19,6 +19,8 @@ cancelPromptBtn.addEventListener('click', function () {
 });
 
 const okPromptBtn = document.getElementById('ok-prompt');
+
+// create a new post
 okPromptBtn.addEventListener('click', function () {
     const input = document.getElementById('ptitle').value;
     let clean = DOMPurify.sanitize(input);
@@ -32,6 +34,7 @@ okPromptBtn.addEventListener('click', function () {
     let summaryArr = JSON.parse(localStorage.getItem("summaries"));
 
 
+
     if (titleArr == null) {
         titleArr = [];
     }
@@ -43,9 +46,9 @@ okPromptBtn.addEventListener('click', function () {
     }
 
 
-    const newTitle = prompt("New member name?");
-    const newDate = prompt("Date");
-    const newSummary = prompt("Summary");
+    const newTitle = document.getElementById('ptitle').value;
+    const newDate = document.getElementById('pdate').value;
+    const newSummary = document.getElementById('psummary').value;
 
 
     titleArr.push(newTitle);
@@ -56,6 +59,8 @@ okPromptBtn.addEventListener('click', function () {
     localStorage.setItem("titles", JSON.stringify(titleArr));
     localStorage.setItem("dates", JSON.stringify(dateArr));
     localStorage.setItem("summaries", JSON.stringify(summaryArr));
+    location.reload();
+
 
 });
 
@@ -99,7 +104,9 @@ function showAllBlogs() {
         tempSummary.innerHTML = summaryArr[ind];
         editBtn.innerHTML = "edit";
         deleteBtn.innerHTML = "delete";
+        editBtn.classList.add("editButtons")
         deleteBtn.classList.add("deleteButtons");
+
 
 
 
@@ -113,7 +120,7 @@ function showAllBlogs() {
 
 
     const allDeleteButtons = document.getElementsByClassName('deleteButtons');
-    console.log(allDeleteButtons);
+    // console.log(allDeleteButtons);
 
     if (allDeleteButtons != null) {
         for (let i = 0; i < allDeleteButtons.length; i++) {
@@ -133,5 +140,24 @@ function showAllBlogs() {
             );
         }
     }
+
+    const allEditButtons = document.getElementsByClassName('editButtons');
+    console.log(allEditButtons);
+
+    if (allEditButtons != null) {
+        for (let i = 0; i < allEditButtons.length; i++) {
+            allEditButtons[i].addEventListener('click', function openEditModal() {
+                promptBtn.click();
+                // populate with old info
+                document.getElementById('ptitle').value = titleArr[i];
+                document.getElementById('pdate').value = dateArr[i];
+                document.getElementById('psummary').value = summaryArr[i];
+            }
+            );
+        }
+
+    }
+
+
 }
 showAllBlogs();
