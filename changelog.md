@@ -1,1 +1,2 @@
-added Google Analytics
+- added Google Analytics
+- added nicer project logo displays instead of laggy iframes that didn't show much
