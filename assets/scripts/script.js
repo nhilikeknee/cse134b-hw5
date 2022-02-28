@@ -10,7 +10,6 @@ confirmEl.addEventListener("click", checkConfirm);
 
 
 function checkConfirm() {
-    customDialog();
     document.getElementById("outputMsg").innerHTML = "The value returned by the confirm method is : ";
     document.getElementById("output").innerHTML = confirm("Do you confirm this?");
 
