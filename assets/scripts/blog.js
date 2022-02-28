@@ -113,8 +113,9 @@ function showAllBlogs() {
         tempTitle.innerHTML = titleArr[ind];
         tempDate.innerHTML = dateArr[ind];
         tempSummary.innerHTML = summaryArr[ind];
-        editBtn.innerHTML = "edit";
-        deleteBtn.innerHTML = "delete";
+
+        editBtn.innerHTML = "<img src='https://cdn-icons.flaticon.com/png/512/2710/premium/2710222.png?token=exp=1646034935~hmac=c197c633e9289529e21bfe923e382303' height='15px' width='15px'>";
+        deleteBtn.innerHTML = "<img src='https://cdn-icons.flaticon.com/png/512/542/premium/542724.png?token=exp=1646035299~hmac=8620bd98d1528a5a6308f3583952807f' height='15px' width='15px'>";
         editBtn.classList.add("editButtons")
         deleteBtn.classList.add("deleteButtons");
 
