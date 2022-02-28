@@ -1,0 +1,80 @@
+:root {
+    --primary: #194c80;
+    /* primary color, used for most text */
+    --background-color: #baeaff;
+    --color1: #65d1ff;
+    --color2: #FF9534;
+    --color3: #FF9E44;
+    /* use for hover */
+    --color4: #FFDBBA;
+    --dark-grey: #2E2E2E;
+    --light-grey: #C1BCB6;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+body {
+    background-color: var(--background-color);
+}
+
+#blog-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.blogPost {
+    color: var(--primary);
+    justify-content: center;
+    align-content: center;
+    width: 300px;
+    background-color: var(--color1);
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px #194c80;
+}
+
+button {
+    padding: 2px 5px;
+    margin: 3px;
+    border: none;
+    border-radius: 2px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.deleteButtons {
+    background-color: rgb(170, 71, 88);
+    color: white;
+}
+
+#promptBtn {
+    padding: 3px;
+    margin: 3px;
+    font-weight: 900;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+dialog {
+    background-color: red;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 600px;
+}
+
+dialog * {
+    background-color: yellow;
+}

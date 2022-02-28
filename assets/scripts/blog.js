@@ -4,6 +4,8 @@ const promptDia = document.getElementById('diaPrompt');
 promptDia.returnValue = true;
 const promptInner = document.getElementById('promptInner');
 promptInner.innerHTML = "Write a blog post"
+let editMode = false;
+let editIndex = null;
 
 promptBtn.addEventListener('click', function () {
     if (promptDia.open != true) {
@@ -50,10 +52,18 @@ okPromptBtn.addEventListener('click', function () {
     const newDate = document.getElementById('pdate').value;
     const newSummary = document.getElementById('psummary').value;
 
-
-    titleArr.push(newTitle);
-    dateArr.push(newDate);
-    summaryArr.push(newSummary);
+    if (editMode == false) {
+        titleArr.push(newTitle);
+        dateArr.push(newDate);
+        summaryArr.push(newSummary);
+    }
+    else {
+        titleArr[editIndex] = newTitle;
+        dateArr[editIndex] = newDate;
+        summaryArr[editIndex] = newSummary;
+        editIndex = null;
+        editMode = false;
+    }
 
 
     localStorage.setItem("titles", JSON.stringify(titleArr));
@@ -99,6 +109,7 @@ function showAllBlogs() {
         let deleteBtn = document.createElement("button");
 
 
+        blog.setAttribute("class", "blogPost");
         tempTitle.innerHTML = titleArr[ind];
         tempDate.innerHTML = dateArr[ind];
         tempSummary.innerHTML = summaryArr[ind];
@@ -147,6 +158,8 @@ function showAllBlogs() {
     if (allEditButtons != null) {
         for (let i = 0; i < allEditButtons.length; i++) {
             allEditButtons[i].addEventListener('click', function openEditModal() {
+                editMode = true;
+                editIndex = i;
                 promptBtn.click();
                 // populate with old info
                 document.getElementById('ptitle').value = titleArr[i];
