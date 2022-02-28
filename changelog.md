@@ -1,2 +1,4 @@
 - added Google Analytics
-- added nicer project logo displays instead of laggy iframes that didn't show much
+- replaced iframs that were causing site to load slower
+- added nicer project logo displays
+- created custom logo to replace the thispersondoesnotexist placeholder photo from before
