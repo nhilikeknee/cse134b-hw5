@@ -43,7 +43,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-
+// const writer = "cse134grader@ucsd.edu";
 auth.onAuthStateChanged(user => {
     let signinSection = document.getElementById("signin-section");
     let signOutButton = document.getElementById("signOut");
@@ -223,7 +223,8 @@ okPromptBtn.addEventListener('click', function () {
                     email: user.email,
                     title: newTitle,
                     summary: newSummary,
-                    date: new Date()
+                    date: new Date(),
+                    author: user.email,
                 })
                     .then(() => {
                         console.log("New post just added for user " + user.email);
@@ -314,6 +315,7 @@ function generateMyBlogpostsFromDatabase(email, blogposts) {
             let blog = document.createElement("div");
             let tempTitle = document.createElement("h3");
             let tempDate = document.createElement("p");
+            let tempAuthor = document.createElement("p");
             let tempSummary = document.createElement("p");
             let editBtn = document.createElement("button");
             let deleteBtn = document.createElement("button");
@@ -324,6 +326,7 @@ function generateMyBlogpostsFromDatabase(email, blogposts) {
 
             blog.setAttribute("class", "blogPost");
             tempTitle.innerHTML = article.title;
+            tempAuthor.innerHTML = article.author;
             let newDate = new Date(article.date * 1000);
             let month = new Date(article.date * 1000).getMonth();
             let day = new Date(article.date * 1000).getDate();
@@ -337,14 +340,17 @@ function generateMyBlogpostsFromDatabase(email, blogposts) {
             editBtn.setAttribute('value', article.id);
             deleteBtn.setAttribute('value', article.id);
 
-
+            tempAuthor.classList.add('small-date');
             tempDate.classList.add('small-date');
             blog.classList.add("centered");
             row.classList.add("horizontal");
 
 
             blog.appendChild(tempTitle);
+            blog.appendChild(tempAuthor);
+
             blog.appendChild(tempDate);
+
             blog.appendChild(tempSummary);
             row.appendChild(editBtn);
             row.append(deleteBtn);
@@ -445,6 +451,7 @@ function generateALLBlogpostsFromDatabase(blogposts) {
         let blogSectionGuest = document.getElementById("blog-section-guest");
         let blog = document.createElement("div");
         let tempTitle = document.createElement("h3");
+        let tempAuthor = document.createElement("p");
         let tempDate = document.createElement("p");
         let tempSummary = document.createElement("p");
         let editBtn = document.createElement("button");
@@ -456,6 +463,7 @@ function generateALLBlogpostsFromDatabase(blogposts) {
 
         blog.setAttribute("class", "blogPost");
         tempTitle.innerHTML = article.title;
+        tempAuthor.innerHTML = article.author;
         let newDate = new Date(article.date * 1000);
         let month = new Date(article.date * 1000).getMonth();
         let day = new Date(article.date * 1000).getDate();
@@ -469,13 +477,14 @@ function generateALLBlogpostsFromDatabase(blogposts) {
         editBtn.setAttribute('value', article.id);
         deleteBtn.setAttribute('value', article.id);
 
-
+        tempAuthor.classList.add('small-date');
         tempDate.classList.add('small-date');
         blog.classList.add("centered");
         row.classList.add("horizontal");
 
 
         blog.appendChild(tempTitle);
+        blog.appendChild(tempAuthor);
         blog.appendChild(tempDate);
         blog.appendChild(tempSummary);
 
