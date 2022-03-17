@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-// import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
+
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
 import {
     getAuth,
@@ -18,8 +18,8 @@ import {
     getDocs,
     deleteDoc,
     updateDoc,
-    setDoc,
     doc,
+
 
 } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js';
 
@@ -46,15 +46,25 @@ const auth = getAuth();
 
 auth.onAuthStateChanged(user => {
     let signinSection = document.getElementById("signin-section");
-    if (user) {
-        console.log("user logged in: ", user);
+    let signOutButton = document.getElementById("signOut");
+    let newPostButton = document.getElementById("promptBtn");
 
+    if (user) {
+        console.log("logged in as ", user.email);
         signinSection.style.display = 'none';
+        signOutButton.style.display = 'block';
+        newPostButton.style.visibility = 'visible';
+
+
         showAllBlogPostFromDatabase(user.email);
     }
     else {
         console.log("user logged out");
         signinSection.style.display = 'block';
+        signOutButton.style.display = 'none';
+        newPostButton.style.visibility = 'hidden';
+
+
 
     }
 });
@@ -62,11 +72,13 @@ auth.onAuthStateChanged(user => {
 
 // const analytics = getAnalytics(app);
 
-document.getElementById("signUp").addEventListener("click", signInUser);
+document.getElementById("signIn").addEventListener("click", signInUser);
+// document.getElementById("signUp").addEventListener("click", signUpUser);
+
 document.getElementById("signOut").addEventListener("click", signOutUser);
 
 // function signUpUser() {
-//     console.log("SIGN UP USER CALLED");
+//     // console.log("SIGN UP USER CALLED");
 //     let email = document.getElementById("email").value;
 //     let password = document.getElementById("password").value;
 
@@ -75,8 +87,7 @@ document.getElementById("signOut").addEventListener("click", signOutUser);
 //         .then((userCredential) => {
 //             // Signed in 
 //             const user = userCredential.user;
-//             // ...
-//             console.log(user);
+//             // console.log(user);
 //         })
 //         .catch((error) => {
 //             const errorCode = error.code;
@@ -87,7 +98,7 @@ document.getElementById("signOut").addEventListener("click", signOutUser);
 
 
 function signInUser() {
-    console.log("SIGN IN USER CALLED");
+    // console.log("SIGN IN USER CALLED");
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
@@ -97,7 +108,7 @@ function signInUser() {
             // Signed in 
             const user = userCredential.user;
             // ...
-            console.log(user);
+            // console.log(user);
             console.log("email is: " + user.email);
             // showAllBlogs();
             // showAllBlogPostFromDatabase(user.email);
@@ -113,7 +124,7 @@ function signInUser() {
 }
 
 function signOutUser() {
-    console.log("SIGN OUT CALLED");
+    // console.log("SIGN OUT CALLED");
     // let tempUser = user;
     auth.signOut()
         .then(() => {
@@ -125,29 +136,13 @@ function signOutUser() {
 
 
 const db = getFirestore(app);
-console.log(db);
+// console.log(db);
 
 
 const colRef = collection(db, 'blogposts');
 
 
 
-// const docRef = doc(db, 'blogposts');
-
-// getDocs(colRef)
-//     .then((snapshot) => {
-//         console.log(snapshot.docs);
-
-//         let blogposts = [];
-//         snapshot.docs.forEach((doc) => {
-//             blogposts.push({ ...doc.data(), id: doc.id })
-//         });
-//         console.log(blogposts);
-
-//     })
-//     .catch(err => {
-//         console.log(err);
-//     })
 
 
 
@@ -185,7 +180,7 @@ okPromptBtn.addEventListener('click', function () {
 
 
     const newTitle = document.getElementById('ptitle').value;
-    const newDate = document.getElementById('pdate').value;
+    // const newDate = document.getElementById('pdate').value;
     const newSummary = document.getElementById('psummary').value;
 
     if (editMode == false) {
@@ -225,11 +220,6 @@ okPromptBtn.addEventListener('click', function () {
                     .then(() => {
                         editID = null;
                         console.log('just updated the post');
-
-                        setTimeout(() => {
-                            location.reload();
-                        }, 1000);
-
                     })
             }
             else {
@@ -238,6 +228,11 @@ okPromptBtn.addEventListener('click', function () {
         })
         editMode = false;
     }
+
+    setTimeout(() => {
+        location.reload();
+    }, 500);
+
 
 });
 
@@ -249,23 +244,21 @@ okPromptBtn.addEventListener('click', function () {
 
 
 function showAllBlogPostFromDatabase(email) {
-    // console.log("showAllBlogPostFromDatabase() called");
-    // console.log(email);
 
     const blogposts = [];
 
     // is a promise
     getDocs(colRef)
         .then((snapshot) => {
-            console.log(snapshot.docs);
+            // console.log(snapshot.docs);
 
             let blogposts = [];
             snapshot.docs.forEach((doc) => {
                 blogposts.push({ ...doc.data(), id: doc.id })
                 // console.log("doc id is " + doc.id);
             });
-            console.log("blogposts is: ");
-            console.log(blogposts);
+            // console.log("blogposts is: ");
+            // console.log(blogposts);
             // console.log("there are " + blogposts.length + " in the database (not all belong to the user)");
             generateBlogpostsFromDatabase(email, blogposts);
 
@@ -274,18 +267,6 @@ function showAllBlogPostFromDatabase(email) {
         .catch(err => {
             console.log(err);
         })
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
@@ -303,29 +284,40 @@ function generateBlogpostsFromDatabase(email, blogposts) {
             let editBtn = document.createElement("button");
             let deleteBtn = document.createElement("button");
 
+            let row = document.createElement("div");
+
+
 
             blog.setAttribute("class", "blogPost");
             tempTitle.innerHTML = article.title;
-            tempDate.innerHTML = new Date(article.date * 1000),
-                tempSummary.innerHTML = article.summary;
+            let newDate = new Date(article.date * 1000);
+            let month = new Date(article.date * 1000).getMonth();
+            let day = new Date(article.date * 1000).getDate();
+            tempDate.innerHTML = month + "/" + day;
+            tempSummary.innerHTML = article.summary;
 
-            editBtn.innerHTML = "edit for now";
-            deleteBtn.innerHTML = "delete for now";
+            editBtn.innerHTML = "<img src='assets/images/pencil.png' height='15px' width='15px'>";
+            deleteBtn.innerHTML = "<img src='assets/images/trash.png' height='15px' width='15px'>";
             editBtn.classList.add("editButtons")
             deleteBtn.classList.add("deleteButtons");
             editBtn.setAttribute('value', article.id);
             deleteBtn.setAttribute('value', article.id);
 
-            console.log('deleteBtn.value is ' + deleteBtn.value);
 
-
+            tempDate.classList.add('small-date');
+            blog.classList.add("centered");
+            row.classList.add("horizontal");
 
 
             blog.appendChild(tempTitle);
             blog.appendChild(tempDate);
             blog.appendChild(tempSummary);
-            blog.appendChild(editBtn);
-            blog.appendChild(deleteBtn);
+            row.appendChild(editBtn);
+            row.append(deleteBtn);
+            blog.appendChild(row);
+
+            // blog.appendChild(editBtn);
+            // blog.appendChild(deleteBtn);
             blogSection.appendChild(blog);
 
 
@@ -339,25 +331,11 @@ function generateBlogpostsFromDatabase(email, blogposts) {
             // for deleting, has to go here otherwise delete buttons won't exist yet lol
 
             const allDeleteButtons = document.getElementsByClassName('deleteButtons');
-            // console.log(allDeleteButtons);
-            // console.log('allDeleteButtons.length = ' + allDeleteButtons.length);
+
 
             if (allDeleteButtons != null) {
                 for (let i = 0; i < allDeleteButtons.length; i++) {
-                    // console.log('deleteBtn id is ' + allDeleteButtons[i].value);
                     allDeleteButtons[i].addEventListener('click', function openDeleteModal() {
-                        // console.log("OPEN DELETE MODAL with index: " + i);
-                        // const confirmation = confirm("Are you sure you want to delete this ?");
-                        // console.log('confirmation result is ' + confirmation);
-                        // if (confirmation == true) {
-                        // titleArr.splice(i, 1);
-                        // dateArr.splice(i, 1);
-                        // summaryArr.splice(i, 1);
-                        // localStorage.setItem("titles", JSON.stringify(titleArr));
-                        // localStorage.setItem("dates", JSON.stringify(dateArr));
-                        // localStorage.setItem("summaries", JSON.stringify(summaryArr));
-                        // location.reload();
-
                         let docRef = doc(db, 'blogposts', allDeleteButtons[i].value);
                         deleteDoc(docRef)
                             .then(() => {
@@ -367,10 +345,6 @@ function generateBlogpostsFromDatabase(email, blogposts) {
                                 }, 1000);
 
                             });
-
-                        // }
-
-
                     }
                     );
                 }
@@ -379,7 +353,6 @@ function generateBlogpostsFromDatabase(email, blogposts) {
 
             // for editing
             const allEditButtons = document.getElementsByClassName('editButtons');
-            // console.log(allEditButtons);
 
             if (allEditButtons != null) {
                 for (let i = 0; i < allEditButtons.length; i++) {
@@ -388,13 +361,10 @@ function generateBlogpostsFromDatabase(email, blogposts) {
                         editIndex = i;
                         promptBtn.click();
 
-                        // let docRef = doc(db, 'blogposts', allEditButtons[i].value);
-
 
                         getDocs(colRef)
                             .then((snapshot) => {
-                                console.log('snapshot is ');
-                                console.log(snapshot.docs);
+
                                 const testing = blogposts.map(article => {
                                     let idToEdit = allEditButtons[i].value;
                                     if (idToEdit == article.id) {
@@ -421,7 +391,7 @@ function generateBlogpostsFromDatabase(email, blogposts) {
 
         }
         else {
-            console.log("don't show this post");
+            console.log("Not showing this post because you didn't write it.");
         }
 
     });

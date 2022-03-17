@@ -22,25 +22,27 @@
 
 body {
     background-color: var(--background-color);
+    margin: 20px;
 }
 
 #blog-section {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .blogPost {
     color: var(--primary);
     justify-content: center;
     align-content: center;
-    width: 300px;
-    background-color: var(--color1);
+    width: 65vw;
+    background-color: rgb(222, 228, 217);
     align-items: center;
     margin: 10px;
-    padding: 10px;
+    padding: 20px 40px;
     border-radius: 5px;
-    box-shadow: 2px 2px 3px #194c80;
+    box-shadow: 2px 2px 3px var(--light-grey);
 }
 
 button {
@@ -55,9 +57,33 @@ button:hover {
 }
 
 .deleteButtons {
-    background-color: rgb(170, 71, 88);
+    background-color: transparent;
     color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
 }
+
+.deleteButtons:hover {
+    background-color: rgb(187, 143, 151);
+    color: var(--background-color);
+
+}
+
+.editButtons {
+    background-color: transparent;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+}
+
+.editButtons:hover {
+    background-color: var(--light-grey);
+    color: var(--background-color);
+
+}
+
 
 #promptBtn {
     padding: 3px;
@@ -79,4 +105,81 @@ dialog {
     height: 600px;
     border: none;
     padding: 30px;
+}
+
+
+
+
+
+#promptBtn {
+
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    border: 6px solid var(--primary);
+    border-radius: 1px;
+    background-color: transparent;
+    margin-top: 3rem;
+    padding: 0.5rem;
+    transition: .2s ease-in-out;
+    box-shadow: var(--primary);
+    transform: scale(1);
+}
+
+#promptBtn:hover {
+    background-color: var(--primary);
+    color: var(--background-color);
+}
+
+
+
+.horizontal {
+    display: flex;
+    justify-content: space-between;
+}
+
+#signOutBox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.align-center {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+#signOut {
+    float: right;
+    top: 0;
+    width: 100px;
+    height: 3em;
+    margin: 5px;
+    font-weight: bold;
+}
+
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.small-date {
+    font-size: .7em;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#psummary {
+    width: 50em;
+    height: 50vh;
 }

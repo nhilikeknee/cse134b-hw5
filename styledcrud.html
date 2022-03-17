@@ -20,22 +20,29 @@
 </head>
 
 <body>
-    <h1>Welcome to my blog!</h1>
+    <div class="signOutBox">
+        <button id="signOut">Sign Out</button>
+    </div>
+    <h1 class="align-center">Welcome to your blog!</h1>
+
+
 
     <!-- <h3>Sign Up Page</h3>
     <input type="email" placeholder="Type your email" id="email">
     <input type="password" placeholder="Enter your Password" id="password">
     <br> -->
-    <section id="signin-section">
-        <h3>Sign In Page</h3>
-        <input type="email" placeholder="Type your email" id="email">
-        <input type="password" placeholder="Enter your Password" id="password">
+    <section id="signin-section" class="align-center">
+        <h3>Sign in to see your blog posts :D</h3>
+        <div class="align-center">
+            <input type="email" placeholder="Type your email" id="email">
+            <input type="password" placeholder="Enter your password" id="password">
+        </div>
+
         <br>
 
-        <button id="signUp">Sign In</button>
-    </section>
-    <section id="signout-section">
-        <button id="signOut">Sign Out</button>
+        <button id="signIn">Sign In</button>
+        <!-- <button id="signUp">Create New Account</button> -->
+
     </section>
 
 
@@ -45,11 +52,10 @@
             <section>
                 <p id="promptInner">
                 </p>
-                <label for="ptitle">Title</label><br>
+                <label for="ptitle"><b>Title</b></label><br>
                 <input type="text" id="ptitle" name="ptitle"><br>
-                <label for="pdate">Date</label><br>
-                <input type="text" id="pdate" name="pdate"><br>
-                <label for="psummary">Summary</label><br>
+
+                <label for="psummary"><b>Summary</b></label><br>
                 <textarea id="psummary"></textarea>
             </section>
             <menu>
@@ -61,10 +67,7 @@
 
 
 
-
-
-
-    <menu>
+    <menu class="align-center">
         <button id="promptBtn">
             + New Post
         </button>
