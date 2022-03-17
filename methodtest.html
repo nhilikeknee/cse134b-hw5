@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Nhi's Portfolio">
+    <meta name="keywords"
+        content="Web Developer, Computer Science, Software Engineer, Software Developer, Engineering, HTML, CSS, JavaScript, San Diego">
+    <meta name="author" content="Nhi Nguyen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./favicon.ico">
+    <script type="module" src="./assets/scripts/methodtest.js"></script>
+
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1FEKKEFC3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-X1FEKKEFC3');
+    </script>
+    <title>Nhi Nguyen Personal Website</title>
+</head>
+
+<body>
+    <header>
+    </header>
+    <main>
+
+
+
+
+
+        <form>
+            <label for="record_id">Record ID:</label>
+            <input type="text" id="record_id" name="record_id" placeholder="15971390" value="">
+            <label for="article_name">Article Name:</label>
+            <input type="text" id="article_name" name="article_name" placeholder="Smith" value=""><br>
+
+            <output id="response">
+
+            </output>
+
+            <fieldset>
+                <legend>I want to talk to you about...
+                </legend>
+                <label for="topic"><i>(Pick a topic or write your own)</i></label><br>
+                <input list="topic-choices" id="topic" name="topic" />
+
+                <datalist id="topic-choices">
+                    <option value="Job Offers">
+                    <option value="Internships">
+                    <option value="Mentorship">
+                </datalist>
+            </fieldset>
+
+
+            <fieldset>
+                <legend>If you would like to meet in person</legend>
+                <label for="start">please pick a meeting date:</label><br>
+                <input type="date" id="start" name="trip-start" value="2022-01-01" min="2008-08-25"
+                    max="2023-01-01"><br><br>
+            </fieldset>
+
+            <fieldset>
+                <legend>Message
+                </legend>
+                <textarea placeholder="What would you like me to know?"></textarea>
+            </fieldset>
+
+
+            <div id="date">
+                <script>
+                    let dateTag = document.getElementById("date");
+                    dateTag.innerHTML = new Date();
+                </script>
+            </div>
+
+
+
+            <menu>
+                <button id="postBtn" value="cancel">POST</button>
+                <button id="getBtn" type="submit">GET</button>
+                <button id="putBtn" value="cancel">PUT</button>
+                <button id="deleteBtn" type="submit">DELETE</button>
+            </menu>
+
+
+
+        </form>
+
+    </main>
+    <footer>© 2022 Nhi Nguyen
+    </footer>
+
+</body>
+
+</html>
