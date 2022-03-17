@@ -48,12 +48,16 @@ auth.onAuthStateChanged(user => {
     let signinSection = document.getElementById("signin-section");
     let signOutButton = document.getElementById("signOut");
     let newPostButton = document.getElementById("promptBtn");
+    let displayEmail = document.getElementById("user-email");
+
 
     if (user) {
         console.log("logged in as ", user.email);
         signinSection.style.display = 'none';
         signOutButton.style.display = 'block';
         newPostButton.style.visibility = 'visible';
+        displayEmail.innerHTML = user.email;
+
 
 
         showAllBlogPostFromDatabase(user.email);
@@ -63,6 +67,8 @@ auth.onAuthStateChanged(user => {
         signinSection.style.display = 'block';
         signOutButton.style.display = 'none';
         newPostButton.style.visibility = 'hidden';
+        displayEmail.innerHTML = "";
+
 
 
 
