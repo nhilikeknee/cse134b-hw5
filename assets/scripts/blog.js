@@ -57,8 +57,7 @@ auth.onAuthStateChanged(user => {
         signOutButton.style.display = 'block';
         newPostButton.style.visibility = 'visible';
         displayEmail.innerHTML = user.email;
-
-
+        loggedIn = true;
 
         showAllBlogPostFromDatabase(user.email);
     }
@@ -68,10 +67,7 @@ auth.onAuthStateChanged(user => {
         signOutButton.style.display = 'none';
         newPostButton.style.visibility = 'hidden';
         displayEmail.innerHTML = "";
-
-
-
-
+        loggedIn = false;
     }
 });
 
@@ -136,6 +132,7 @@ function signOutUser() {
         .then(() => {
             // console.log(tempUser + "is signed out");
             console.log("user should be signed out");
+            loggedIn = false;
             location.reload();
         })
 }
@@ -161,6 +158,35 @@ promptInner.innerHTML = "Write a blog post"
 let editMode = false;
 let editID = null;
 let editIndex = null;
+let loggedIn = false;
+
+
+window.onload = function () {
+
+    getDocs(colRef)
+        .then((snapshot) => {
+            // console.log(snapshot.docs);
+
+            let blogposts = [];
+            snapshot.docs.forEach((doc) => {
+                blogposts.push({ ...doc.data(), id: doc.id })
+            });
+
+            if (loggedIn != true) {
+                generateALLBlogpostsFromDatabase(blogposts);
+                let blogSectionGuest = document.getElementById("blog-section-guest");
+                blogSectionGuest.style.display = 'flex';
+
+            }
+
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+};
+
+
 
 promptBtn.addEventListener('click', function () {
     if (promptDia.open != true) {
@@ -250,7 +276,6 @@ okPromptBtn.addEventListener('click', function () {
 
 
 function showAllBlogPostFromDatabase(email) {
-
     const blogposts = [];
 
     // is a promise
@@ -263,10 +288,13 @@ function showAllBlogPostFromDatabase(email) {
                 blogposts.push({ ...doc.data(), id: doc.id })
                 // console.log("doc id is " + doc.id);
             });
-            // console.log("blogposts is: ");
-            // console.log(blogposts);
-            // console.log("there are " + blogposts.length + " in the database (not all belong to the user)");
-            generateBlogpostsFromDatabase(email, blogposts);
+            console.log("logged in is " + loggedIn);
+
+            if (loggedIn) {
+                generateMyBlogpostsFromDatabase(email, blogposts);
+                let blogSectionGuest = document.getElementById("blog-section-guest");
+                blogSectionGuest.style.display = 'none';
+            }
 
 
         })
@@ -276,7 +304,7 @@ function showAllBlogPostFromDatabase(email) {
 }
 
 
-function generateBlogpostsFromDatabase(email, blogposts) {
+function generateMyBlogpostsFromDatabase(email, blogposts) {
 
     const allBlogs = blogposts.map(article => {
         // console.log("this article's id is " + article.id);
@@ -342,6 +370,7 @@ function generateBlogpostsFromDatabase(email, blogposts) {
             if (allDeleteButtons != null) {
                 for (let i = 0; i < allDeleteButtons.length; i++) {
                     allDeleteButtons[i].addEventListener('click', function openDeleteModal() {
+
                         let docRef = doc(db, 'blogposts', allDeleteButtons[i].value);
                         deleteDoc(docRef)
                             .then(() => {
@@ -409,3 +438,55 @@ function generateBlogpostsFromDatabase(email, blogposts) {
 // ============================
 
 
+function generateALLBlogpostsFromDatabase(blogposts) {
+
+
+    const allBlogs = blogposts.map(article => {
+        let blogSectionGuest = document.getElementById("blog-section-guest");
+        let blog = document.createElement("div");
+        let tempTitle = document.createElement("h3");
+        let tempDate = document.createElement("p");
+        let tempSummary = document.createElement("p");
+        let editBtn = document.createElement("button");
+        let deleteBtn = document.createElement("button");
+
+        let row = document.createElement("div");
+
+
+
+        blog.setAttribute("class", "blogPost");
+        tempTitle.innerHTML = article.title;
+        let newDate = new Date(article.date * 1000);
+        let month = new Date(article.date * 1000).getMonth();
+        let day = new Date(article.date * 1000).getDate();
+        tempDate.innerHTML = month + "/" + day;
+        tempSummary.innerHTML = article.summary;
+
+        editBtn.innerHTML = "<img src='assets/images/pencil.png' height='15px' width='15px'>";
+        deleteBtn.innerHTML = "<img src='assets/images/trash.png' height='15px' width='15px'>";
+        editBtn.classList.add("editButtons")
+        deleteBtn.classList.add("deleteButtons");
+        editBtn.setAttribute('value', article.id);
+        deleteBtn.setAttribute('value', article.id);
+
+
+        tempDate.classList.add('small-date');
+        blog.classList.add("centered");
+        row.classList.add("horizontal");
+
+
+        blog.appendChild(tempTitle);
+        blog.appendChild(tempDate);
+        blog.appendChild(tempSummary);
+
+        blogSectionGuest.appendChild(blog);
+
+
+
+
+    }
+
+
+
+    );
+}

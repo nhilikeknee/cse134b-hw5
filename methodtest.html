@@ -39,7 +39,16 @@
 
 
 
-        <form>
+        <form id="method-test-form">
+
+
+            <div id="date">
+                <script>
+                    let dateTag = document.getElementById("date");
+                    dateTag.innerHTML = new Date();
+                </script>
+            </div>
+
             <label for="record_id">Record ID:</label>
             <input type="text" id="record_id" name="record_id" placeholder="15971390" value="">
             <label for="article_name">Article Name:</label>
@@ -50,25 +59,20 @@
             <br>
 
 
-            <div id="date">
-                <script>
-                    let dateTag = document.getElementById("date");
-                    dateTag.innerHTML = new Date();
-                </script>
-            </div>
 
         </form>
 
-        <menu>
+        <menu class="center-horizontal">
             <button id="postBtn" value="cancel">POST</button>
             <button id="getBtn" type="submit">GET</button>
             <button id="putBtn" value="cancel">PUT</button>
             <button id="deleteBtn" type="submit">DELETE</button>
         </menu>
-        <h3>Output:</h3>
-        <output id="response">
+        <h3 class="center-horizontal">Output:</h3>
+        <div class="center-horizontal"> <output id="response">
 
-        </output>
+            </output>
+        </div>
 
 
 
@@ -82,8 +86,7 @@
 
 
     </main>
-    <footer>© 2022 Nhi Nguyen
-    </footer>
+
 
 </body>
 

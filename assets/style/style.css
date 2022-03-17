@@ -292,3 +292,20 @@
       letter-spacing: 0.1em;
       /* line-height: 1px; */
   }
+
+
+  .align-center {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+  }
+
+  #method-test-form {
+      margin-top: 5em;
+
+  }
+
+  #response {
+      width: 70vw;
+  }

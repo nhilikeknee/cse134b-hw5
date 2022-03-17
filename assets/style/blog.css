@@ -32,6 +32,13 @@ body {
     align-items: center;
 }
 
+#blog-section-guest {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
 .blogPost {
     color: var(--primary);
     justify-content: center;
@@ -149,6 +156,8 @@ dialog {
     align-items: center;
     align-content: center;
 }
+
+
 
 #signOut {
     float: right;
