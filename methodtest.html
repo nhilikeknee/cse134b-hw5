@@ -43,38 +43,11 @@
             <label for="record_id">Record ID:</label>
             <input type="text" id="record_id" name="record_id" placeholder="15971390" value="">
             <label for="article_name">Article Name:</label>
-            <input type="text" id="article_name" name="article_name" placeholder="Smith" value=""><br>
-
-            <output id="response">
-
-            </output>
-
-            <fieldset>
-                <legend>I want to talk to you about...
-                </legend>
-                <label for="topic"><i>(Pick a topic or write your own)</i></label><br>
-                <input list="topic-choices" id="topic" name="topic" />
-
-                <datalist id="topic-choices">
-                    <option value="Job Offers">
-                    <option value="Internships">
-                    <option value="Mentorship">
-                </datalist>
-            </fieldset>
-
-
-            <fieldset>
-                <legend>If you would like to meet in person</legend>
-                <label for="start">please pick a meeting date:</label><br>
-                <input type="date" id="start" name="trip-start" value="2022-01-01" min="2008-08-25"
-                    max="2023-01-01"><br><br>
-            </fieldset>
-
-            <fieldset>
-                <legend>Message
-                </legend>
-                <textarea placeholder="What would you like me to know?"></textarea>
-            </fieldset>
+            <input type="text" id="article_name" name="article_name" placeholder="Top 10 Anime Betrayals" value=""><br>
+            <label for="article_body">Article Body:</label>
+            <textarea type="text" id="article_body" name="article_body"
+                placeholder="Idk man I haven't seen any anime this entire quarter" value=""></textarea>
+            <br>
 
 
             <div id="date">
@@ -84,18 +57,29 @@
                 </script>
             </div>
 
-
-
-            <menu>
-                <button id="postBtn" value="cancel">POST</button>
-                <button id="getBtn" type="submit">GET</button>
-                <button id="putBtn" value="cancel">PUT</button>
-                <button id="deleteBtn" type="submit">DELETE</button>
-            </menu>
-
-
-
         </form>
+
+        <menu>
+            <button id="postBtn" value="cancel">POST</button>
+            <button id="getBtn" type="submit">GET</button>
+            <button id="putBtn" value="cancel">PUT</button>
+            <button id="deleteBtn" type="submit">DELETE</button>
+        </menu>
+        <h3>Output:</h3>
+        <output id="response">
+
+        </output>
+
+
+
+
+
+
+
+
+
+
+
 
     </main>
     <footer>© 2022 Nhi Nguyen

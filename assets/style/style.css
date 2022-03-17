@@ -285,3 +285,10 @@
   #about-me-section button {
       margin-top: 20px;
   }
+
+
+  #response {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      /* line-height: 1px; */
+  }

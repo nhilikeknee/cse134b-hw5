@@ -176,30 +176,12 @@ cancelPromptBtn.addEventListener('click', function () {
 
 const okPromptBtn = document.getElementById('ok-prompt');
 
-// create a new post
+// create (or update) a post
 okPromptBtn.addEventListener('click', function () {
     const input = document.getElementById('ptitle').value;
     let clean = DOMPurify.sanitize(input);
     // document.getElementById("outputMsg").innerHTML = "Prompt result: ";
     // document.getElementById("output").innerHTML = clean;
-
-
-
-    let titleArr = JSON.parse(localStorage.getItem("titles"));
-    let dateArr = JSON.parse(localStorage.getItem("dates"));
-    let summaryArr = JSON.parse(localStorage.getItem("summaries"));
-
-
-
-    if (titleArr == null) {
-        titleArr = [];
-    }
-    if (dateArr == null) {
-        dateArr = [];
-    }
-    if (summaryArr == null) {
-        summaryArr = [];
-    }
 
 
     const newTitle = document.getElementById('ptitle').value;
@@ -246,7 +228,6 @@ okPromptBtn.addEventListener('click', function () {
 
                         setTimeout(() => {
                             location.reload();
-
                         }, 1000);
 
                     })
@@ -257,17 +238,6 @@ okPromptBtn.addEventListener('click', function () {
         })
         editMode = false;
     }
-
-
-
-    // localStorage.setItem("titles", JSON.stringify(titleArr));
-    // localStorage.setItem("dates", JSON.stringify(dateArr));
-    // localStorage.setItem("summaries", JSON.stringify(summaryArr));
-
-
-
-
-
 
 });
 
